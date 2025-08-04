@@ -8,7 +8,7 @@ root.geometry("455x344")
 # image1=Label(root, image=photo)  # used image cannot used again
 # image1.photo=photo
 # image1.pack()
-image = Image.open("logo.jpg")  # Use your file name and extension
+image = Image.open(" logo.jpg ")  # Use your file name and extension
 image = image.resize((1024, 720))  # Resize the image if needed
 photo = ImageTk.PhotoImage(image)
 image=Label(root,image=photo)
