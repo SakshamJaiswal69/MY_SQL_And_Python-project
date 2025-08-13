@@ -1,5 +1,7 @@
 from tkinter import*
 from PIL import Image,ImageTk #pip install pillow
+from course import CourseClass
+from student import StudentClass
 class RMS:
     def __init__(self,root):
         self.root=root
@@ -15,12 +17,12 @@ class RMS:
         M_Frame=LabelFrame(self.root,text="MENU",font=("times new roman",15),bg="white")
         M_Frame.place(x=10,y=70,width=1340,height=80)
 
-        btn_course=Button(M_Frame,text="COURSE",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=20,y=5,width=200,height=40)
-        btn_student=Button(M_Frame,text="STUDENT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=240,y=5,width=200,height=40)
-        btn_result=Button(M_Frame,text="RESULT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=460,y=5,width=200,height=40)
-        btn_view=Button(M_Frame,text="VIEW STUDENT\nRESULT",font=("goudy old style",14,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=680,y=5,width=200,height=40)
-        btn_exit=Button(M_Frame,text="EXIT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=900,y=5,width=200,height=40)
-        btn_logout=Button(M_Frame,text="LOGOUT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="black").place(x=1120,y=5,width=200,height=40)
+        btn_course=Button(M_Frame,text="COURSE",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="white",command=self.add_course).place(x=20,y=5,width=200,height=40)
+        btn_student=Button(M_Frame,text="STUDENT",font=("goudy old style",15,"bold"),cursor="hand2",command=self.add_Student,bg="#FF0000",fg="white").place(x=240,y=5,width=200,height=40)
+        btn_result=Button(M_Frame,text="RESULT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="white").place(x=460,y=5,width=200,height=40)
+        btn_view=Button(M_Frame,text="VIEW STUDENT\nRESULT",font=("goudy old style",14,"bold"),cursor="hand2",bg="#FF0000",fg="white").place(x=680,y=5,width=200,height=40)
+        btn_exit=Button(M_Frame,text="EXIT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="white").place(x=900,y=5,width=200,height=40)
+        btn_logout=Button(M_Frame,text="LOGOUT",font=("goudy old style",15,"bold"),cursor="hand2",bg="#FF0000",fg="white").place(x=1120,y=5,width=200,height=40)
         #-->this is for BACKGROUNG image uploader and fiter also enhancer
         self.bg_img=Image.open("images/na.jpg") 
         self.bg_img=self.bg_img.resize((920,350),Image.LANCZOS) 
@@ -29,8 +31,7 @@ class RMS:
 
         self.lbl_bg=Label(self.root,image=self.bg_img).place(x=400,y=180,width=920,height=350)
 
-        #-->this is for footer or bottom details
-        footer=Label(self.root,text="SAKSHAM JAISWAL\nCOLLEGE RESULT MANAGEMENT SYSTEM\nContact Us for any Technical Issue:983801XXXX ",font=("goudy old style",12,"bold"),bg="#228B22",fg="BLACK").pack(side=BOTTOM,fill=X)
+       
         # #-->this is for the total number of courses, students, and results
         self.lbl_course=Label(self.root,text="Total Courses\n[ 0 ]",font=("goudy old style",22),bd=10,relief=RIDGE,bg="#FFA500",fg="BLACK").place(x=400,y=530,width=300,height=100)
 
@@ -38,6 +39,18 @@ class RMS:
 
         self.lbl_Result=Label(self.root,text="Total Result\n[ 0 ]",font=("goudy old style",22),bd=10,relief=RIDGE,bg="#FF0000",fg="BLACK").place(x=1020,y=530,width=300,height=100)
         #-->this is for class and object attributes instances 
+
+        #-->this is for footer or bottom details
+        footer=Label(self.root,text="SAKSHAM JAISWAL\nCOLLEGE RESULT MANAGEMENT SYSTEM\nContact Us for any Technical Issue:983801XXXX ",font=("goudy old style",12,"bold"),bg="#228B22",fg="BLACK").pack(side=BOTTOM,fill=X)
+
+    def add_course(self):
+        self.new_win=Toplevel(self.root)
+        self.new_obj=CourseClass(self.new_win)
+
+    def add_Student(self):
+        self.new_win=Toplevel(self.root)
+        self.new_obj=StudentClass(self.new_win)
+
 if __name__=="__main__":
     root=Tk()
     obj=RMS(root)
